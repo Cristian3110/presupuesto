@@ -1,26 +1,24 @@
 // Clase padre de Datos
 
-class Dato{
+class Dato {
+  constructor(descripcion, valor) {
+    this._descripcion = descripcion;
+    this._valor = valor;
+  }
 
-    constructor(descripcion, valor){
+  get descripcion() {
+    return this._descripcion;
+  }
 
-        this._descripcion = descripcion;
-        this._valor = valor;
-    }
+  set descripcion(descripcion) {
+    return (this._descripcion = descripcion);
+  }
 
-    get descripcion(){
-        return this._descripcion;
-    }
+  get valor() {
+    return this._valor;
+  }
 
-    set descripcion(descripcion){
-        return this._descripcion = descripcion;
-    }
-
-    get valor (){
-        return this._valor;
-    }
-
-    set valor(valor){
-        return this._valor = valor;
-    }
+  set valor(valor) {
+    return (this._valor = valor);
+  }
 }
