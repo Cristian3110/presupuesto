@@ -5,11 +5,17 @@
 const ingresos = [
   new Ingreso("salario", 1000.0),
   new Ingreso("Venta de Coche", 3000.0),
+  new Ingreso("Comisiones", 1500),
+  new Ingreso("Venta de Motor", 200),
+  new Ingreso("Bono", 500),
 ];
 
 const egresos = [
   new Egreso("Renta de Departamento", 900.0),
   new Egreso("Servicios", 300),
+  new Egreso("Alquiler", 500),
+  new Egreso("Pago de Personal", 2000),
+  new Egreso("Compra de Máquinas", 500),
 ];
 
 let cargarApp = () => {
@@ -90,9 +96,7 @@ const crearIngresoHTML = (ingreso) => {
 };
 
 const eliminarIngreso = (id) => {
-  let indiceEliminar = ingresos.findIndex((ingreso) => {
-    ingreso.id === id;
-  });
+  let indiceEliminar = ingresos.findIndex((ingreso) => ingreso.id === id);
   ingresos.splice(indiceEliminar, 1);
   cargarCabecero();
   cargarIngresos();
@@ -117,7 +121,9 @@ const crearEgresosHTML = (egreso) => {
           )}</div>
             <div class="elemento_eliminar">
               <button class="elemento_eliminar--btn">
-                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-trash-alt"
+                onclick=(eliminarEgreso(${egreso.id}))
+                ></i>
               </button>
             </div>
       </div>
@@ -125,3 +131,9 @@ const crearEgresosHTML = (egreso) => {
   return egresoHTML;
 };
 
+const eliminarEgreso = (id) => {
+  let indiceEliminar = egresos.findIndex((egreso) => egreso.id === id);
+  egresos.splice(indiceEliminar, 1);
+  cargarCabecero();
+  cargarEgresos();
+};
