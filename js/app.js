@@ -5,7 +5,7 @@
 const ingresos = [
   new Ingreso("salario", 1000.0),
   new Ingreso("Venta de Coche", 3000.0),
-  new Ingreso("Venta de Laptop", 500.0),
+ 
 ];
 
 const egresos = [
@@ -15,6 +15,7 @@ const egresos = [
 
 let cargarApp = () => {
   cargarCabecero();
+  cargarIngresos();
 };
 
 let totalIngresos = () => {
@@ -37,7 +38,8 @@ let cargarCabecero = () => {
   let presupuesto = totalIngresos() - totalEgresos();
   let porcentajeEgreso = totalEgresos() / totalIngresos();
   document.getElementById("presupuesto").innerHTML = formatoMoneda(presupuesto);
-  document.getElementById("porcentaje").innerHTML = formatoPorcentaje(porcentajeEgreso);
+  document.getElementById("porcentaje").innerHTML =
+    formatoPorcentaje(porcentajeEgreso);
   document.getElementById("ingresos").innerHTML = formatoMoneda(
     totalIngresos()
   );
@@ -52,6 +54,35 @@ const formatoMoneda = (valor) => {
   });
 };
 
-const formatoPorcentaje = (valor)=>{
-    return valor.toLocaleString('en-US',{style:'percent',minimunFractionDigits:2});
-}
+const formatoPorcentaje = (valor) => {
+  return valor.toLocaleString("en-US", {
+    style: "percent",
+    minimunFractionDigits: 2,
+  });
+};
+
+// Cargando los ingreso y egresos
+
+const cargarIngresos = () => {
+  let ingresosHTML = "";
+  for (let ingreso of ingresos) {
+    ingresosHTML += crearIngresoHTML(ingreso);
+  }
+  document.getElementById("lista-ingresos").innerHTML = ingresosHTML;
+};
+
+const crearIngresoHTML = (ingreso) => {
+  let ingresoHTML = `
+  <div class="elemento limpiarEstilos">
+  <div class="elemento_descripcion">${ingreso.descripcion}</div>
+  <div class="derecha limpiarEstilos">
+    <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
+    <div class="elemento_eliminar">
+      <button class="elemento_eliminar--btn">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </div>
+  </div>
+</div>`;
+  return ingresoHTML;
+};
