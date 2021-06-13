@@ -79,12 +79,23 @@ const crearIngresoHTML = (ingreso) => {
         <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
           <div class="elemento_eliminar">
             <button class="elemento_eliminar--btn">
-              <i class="fas fa-trash-alt"></i>
+              <i class="fas fa-trash-alt" 
+              onclick=(eliminarIngreso(${ingreso.id}))
+              ></i>
             </button>
         </div>
       </div>
   </div>`;
   return ingresoHTML;
+};
+
+const eliminarIngreso = (id) => {
+  let indiceEliminar = ingresos.findIndex((ingreso) => {
+    ingreso.id === id;
+  });
+  ingresos.splice(indiceEliminar, 1);
+  cargarCabecero();
+  cargarIngresos();
 };
 
 const cargarEgresos = () => {
@@ -101,7 +112,9 @@ const crearEgresosHTML = (egreso) => {
     <div class="elemento_descripcion">${egreso.descripcion}</div>
       <div class="derecha limpiarEstilos">
         <div class="elemento_valor">- ${formatoMoneda(egreso.valor)}</div>
-          <div class="elemento_porcentaje">${formatoMoneda(egreso.valor/totalEgresos())}</div>
+          <div class="elemento_porcentaje">${formatoMoneda(
+            egreso.valor / totalEgresos()
+          )}</div>
             <div class="elemento_eliminar">
               <button class="elemento_eliminar--btn">
                 <i class="fas fa-trash-alt"></i>
@@ -111,3 +124,4 @@ const crearEgresosHTML = (egreso) => {
   </div>`;
   return egresoHTML;
 };
+
