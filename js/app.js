@@ -5,7 +5,6 @@
 const ingresos = [
   new Ingreso("salario", 1000.0),
   new Ingreso("Venta de Coche", 3000.0),
- 
 ];
 
 const egresos = [
@@ -16,6 +15,7 @@ const egresos = [
 let cargarApp = () => {
   cargarCabecero();
   cargarIngresos();
+  cargarEgresos();
 };
 
 let totalIngresos = () => {
@@ -74,15 +74,40 @@ const cargarIngresos = () => {
 const crearIngresoHTML = (ingreso) => {
   let ingresoHTML = `
   <div class="elemento limpiarEstilos">
-  <div class="elemento_descripcion">${ingreso.descripcion}</div>
-  <div class="derecha limpiarEstilos">
-    <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
-    <div class="elemento_eliminar">
-      <button class="elemento_eliminar--btn">
-        <i class="fas fa-trash-alt"></i>
-      </button>
-    </div>
-  </div>
-</div>`;
+    <div class="elemento_descripcion">${ingreso.descripcion}</div>
+      <div class="derecha limpiarEstilos">
+        <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
+          <div class="elemento_eliminar">
+            <button class="elemento_eliminar--btn">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+        </div>
+      </div>
+  </div>`;
   return ingresoHTML;
+};
+
+const cargarEgresos = () => {
+  let egresosHTML = "";
+  for (egreso of egresos) {
+    egresosHTML += crearEgresosHTML(egreso);
+  }
+  document.getElementById("lista-egresos").innerHTML = egresosHTML;
+};
+
+const crearEgresosHTML = (egreso) => {
+  let egresoHTML = `
+  <div class="elemento limpiarEstilos">
+    <div class="elemento_descripcion">${egreso.descripcion}</div>
+      <div class="derecha limpiarEstilos">
+        <div class="elemento_valor">- ${formatoMoneda(egreso.valor)}</div>
+          <div class="elemento_porcentaje">${formatoMoneda(egreso.valor/totalEgresos())}</div>
+            <div class="elemento_eliminar">
+              <button class="elemento_eliminar--btn">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+      </div>
+  </div>`;
+  return egresoHTML;
 };
