@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/estilos.css" />
+    <script
+      src="https://kit.fontawesome.com/ab358214bf.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Aplicación de Presupuesto</title>
   </head>
   <body onload="cargarApp()">
@@ -42,15 +46,23 @@
               <div class="elemento_valor">+2200.00</div>
               <div class="elemento_eliminar">
                 <button class="elemento_eliminar--btn">
-                  <span class="boton_eliminar"></span>
+                  <i class="fas fa-trash-alt"></i>
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="egreso">
+        <h2 class="egreso_titulo">Egresos</h2>
+        <div id="lista-egresos">
+          <div class="elemento limpiarEstilos">
+            <div class="elemento_descripcion">Renta Departamento</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="https://unpkg.com/ionicons@5.5.1/dist/ionicons.js"></script>
+
     <script src="js/Dato.js"></script>
     <script src="js/Ingreso.js"></script>
     <script src="js/Egreso.js"></script>
