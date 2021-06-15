@@ -2,21 +2,9 @@
  * Configuración de la lógica de la aplicación
  */
 
-const ingresos = [
-  new Ingreso("salario", 1000.0),
-  new Ingreso("Venta de Coche", 3000.0),
-  new Ingreso("Comisiones", 1500),
-  new Ingreso("Venta de Motor", 200),
-  new Ingreso("Bono", 500),
-];
+const ingresos = [];
 
-const egresos = [
-  new Egreso("Renta de Departamento", 900.0),
-  new Egreso("Servicios", 300),
-  new Egreso("Alquiler", 500),
-  new Egreso("Pago de Personal", 2000),
-  new Egreso("Compra de Máquinas", 500),
-];
+const egresos = [];
 
 let cargarApp = () => {
   cargarCabecero();
