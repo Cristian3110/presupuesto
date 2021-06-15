@@ -148,10 +148,12 @@ let agregarDato = () => {
       ingresos.push(new Ingreso(descripcion.value, +valor.value));
       cargarIngresos();
       cargarCabecero();
+      document.getElementById("forma").reset();
     } else if (tipo.value === "egreso") {
       egresos.push(new Egreso(descripcion.value, +valor.value));
       cargarEgresos();
       cargarCabecero();
+      document.getElementById("forma").reset();
     }
   }
 };
