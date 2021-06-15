@@ -137,3 +137,21 @@ const eliminarEgreso = (id) => {
   cargarCabecero();
   cargarEgresos();
 };
+
+let agregarDato = () => {
+  let forma = document.forms["forma"];
+  let tipo = forma["tipo"];
+  let descripcion = forma["descripcion"];
+  let valor = forma["valor"];
+  if (descripcion.value !== "" && valor.value !== "") {
+    if (tipo.value === "ingreso") {
+      ingresos.push(new Ingreso(descripcion.value, +valor.value));
+      cargarIngresos();
+      cargarCabecero();
+    } else if (tipo.value === "egreso") {
+      egresos.push(new Egreso(descripcion.value, +valor.value));
+      cargarEgresos();
+      cargarCabecero();
+    }
+  }
+};
